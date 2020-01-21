@@ -180,13 +180,13 @@ public:
   //! \brief Return the `i`th element.
   //! \param [in] i  The element to access.
   //! @{
-  reference operator[](size_type i) 
+  FLECSI_INLINE_TARGET reference operator[](size_type i) 
   { 
     assert( i < size() && "out of range" );
     return elems_[i];
   }
         
-  const_reference operator[](size_type i) const 
+  FLECSI_INLINE_TARGET const_reference operator[](size_type i) const 
   {     
     assert( i < size() && "out of range" );
     return elems_[i]; 
@@ -385,7 +385,7 @@ public:
   //! \param[in] val The constant on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2>
-  auto & operator*=(const T2 & val) {
+  FLECSI_INLINE_TARGET auto & operator*=(const T2 & val) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] *= val;    
     return *this;
@@ -628,7 +628,7 @@ operator*( const array<T,N>& lhs,
 
 template <typename T, typename U, std::size_t N>
 std::enable_if_t< compatibility::is_arithmetic_v< std::decay_t<U> >, array<T,N> >
-operator*( const U & lhs,
+FLECSI_INLINE_TARGET operator*( const U & lhs,
            const array<T,N>& rhs )
 {
   array<T,N> tmp;
