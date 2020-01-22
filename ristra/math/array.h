@@ -281,7 +281,7 @@ public:
   }
 
   //! \brief assign one value to all elements
-  void fill(const T& value)
+  FLECSI_INLINE_TARGET void fill(const T& value)
   {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] = value;    
@@ -314,7 +314,7 @@ public:
 
   //!\brief  assignment with type conversion
   template <typename T2>
-  auto & operator= (const array<T2,N>& rhs) {
+  FLECSI_INLINE_TARGET auto & operator= (const array<T2,N>& rhs) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] = rhs.elems_[i];    
     return *this;
@@ -324,7 +324,7 @@ public:
   //! \param[in] val The constant on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2>
-  auto & operator= (const T2 & val) {
+  FLECSI_INLINE_TARGET auto & operator= (const T2 & val) {
     fill(val);
     return *this;
   }
@@ -334,7 +334,7 @@ public:
   //! \param[in] rhs The array on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2>
-  auto & operator+=(const array<T2,N> & rhs) {
+  FLECSI_INLINE_TARGET auto & operator+=(const array<T2,N> & rhs) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] += rhs.elems_[i];    
     return *this;
@@ -344,7 +344,7 @@ public:
   //! \param[in] val The constant on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2>
-  auto & operator+=(const T2 & val) {
+  FLECSI_INLINE_TARGET auto & operator+=(const T2 & val) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] += val;    
     return *this;
@@ -354,7 +354,7 @@ public:
   //! \param[in] rhs The array on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2>
-  auto & operator-=(const array<T2,N> & rhs) {
+  FLECSI_INLINE_TARGET auto & operator-=(const array<T2,N> & rhs) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] -= rhs.elems_[i];    
     return *this;
@@ -364,7 +364,7 @@ public:
   //! \param[in] val The constant on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2>
-  auto & operator-=(const T2 & val) {
+  FLECSI_INLINE_TARGET auto & operator-=(const T2 & val) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] -= val;    
     return *this;
@@ -375,7 +375,7 @@ public:
   //! \param[in] rhs The array on the right hand side of the operator.
   //! \return A reference to the current object.
   template <typename T2> 
-  auto & operator*=(const array<T2,N> & rhs) {
+  FLECSI_INLINE_TARGET auto & operator*=(const array<T2,N> & rhs) {
     for ( counter_type i=0; i<length_as_counter; i++ )
       elems_[i] *= rhs.elems_[i];    
     return *this;
