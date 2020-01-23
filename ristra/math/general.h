@@ -22,6 +22,7 @@
 #include <numeric>
 #include <cmath>
 
+#include <flecsi/utils/target.h>
 namespace ristra {
 namespace math {
 
@@ -161,7 +162,7 @@ auto max_element( const A<T,N...> & a )
 //! \return The result of the operation
 //! @{
 template< class InputIt1, class InputIt2 >
-auto dot_product( InputIt1 first1, InputIt1 last1, InputIt2 first2 )
+FLECSI_INLINE_TARGET auto dot_product( InputIt1 first1, InputIt1 last1, InputIt2 first2 )
 {
   std::decay_t< decltype(*first1) > zero = 0;
   return std::inner_product(first1, last1, first2, zero );
@@ -172,7 +173,7 @@ template<
   template< typename, std::size_t... > class A,
   std::size_t Len = utils::multiply( N... )
  >
-T dot_product(const A<T, N...> &a, const A<T, N...> &b) 
+FLECSI_INLINE_TARGET T dot_product(const A<T, N...> &a, const A<T, N...> &b) 
 {
   T dot = 0;
   for( utils::select_counter_t<Len> i = 0; i<Len; ++i )
@@ -182,7 +183,7 @@ T dot_product(const A<T, N...> &a, const A<T, N...> &b)
 
 
 template< template<typename...> class C, typename T, typename...Args >
-T dot_product(const C<T,Args...> &a, const C<T,Args...> &b) 
+FLECSI_INLINE_TARGET T dot_product(const C<T,Args...> &a, const C<T,Args...> &b) 
 {
   auto dot = dot_product( a.begin(), a.end(), b.begin() );
   return dot;
